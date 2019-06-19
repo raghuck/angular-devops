@@ -18,8 +18,9 @@ phases:
       - npm run test:ci
   post_build:
     commands:
-      - aws s3 sync ./dist/angular-devops s3://codepipeline-us-east-1-839112951685 --acl 'public-read' --delete
-
+      - aws s3 rm s3://test4324 --recursive
+      - aws s3 cp dist/angular-devops/ s3://test4324 --recursive
+      
 artifacts:
   files:
     - '**/*.html'
